@@ -37,4 +37,10 @@ public class User {
 
     private LocalDateTime regDateAndTime;
 
+    public User(String userName, String email, String phone, LocalDateTime now) {
+        this.username = userName;
+        this.email = email;
+        this.phone = phone;
+        this.regDateAndTime = now;
+    }
 }
