@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserRegistrationDTO {
+public class UserRegistrationDto {
 
     @NotBlank(message = "Username is required!")
     @Size(min= 3, message = "Username must have atleast 3 characters!")
