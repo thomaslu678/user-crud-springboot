@@ -46,7 +46,12 @@ public class UserServiceImpl implements UserService{
 
             return ResponseEntity
                     .status(HttpStatus.CREATED)
-                    .body(new ApiResponseDto<>(ApiResponseStatus.SUCCESS.name(), "New user account has been successfully created!"));
+                    .body(
+                            ApiResponseDto.builder()
+                                    .isSuccess(true)
+                                    .message("New user account has been successfully created!")
+                                    .build()
+                    );
 
         }catch (UserAlreadyExistsException e) {
             throw new UserAlreadyExistsException(e.getMessage());
@@ -64,7 +69,11 @@ public class UserServiceImpl implements UserService{
 
             return ResponseEntity
                     .status(HttpStatus.OK)
-                    .body(new ApiResponseDto<>(ApiResponseStatus.SUCCESS.name(), users)
+                    .body(
+                            ApiResponseDto.builder()
+                                    .isSuccess(true)
+                                    .response(users)
+                                    .build()
                     );
 
         }catch (Exception e) {
@@ -88,7 +97,11 @@ public class UserServiceImpl implements UserService{
 
             return ResponseEntity
                     .status(HttpStatus.OK)
-                    .body(new ApiResponseDto<>(ApiResponseStatus.SUCCESS.name(), "User account updated successfully!")
+                    .body(
+                            ApiResponseDto.builder()
+                                    .isSuccess(true)
+                                    .message("User account updated successfully!")
+                                    .build()
                     );
 
         }catch(UserNotFoundException e){
@@ -109,8 +122,13 @@ public class UserServiceImpl implements UserService{
 
             return ResponseEntity
                     .status(HttpStatus.OK)
-                    .body(new ApiResponseDto<>(ApiResponseStatus.SUCCESS.name(), "User account deleted successfully!")
+                    .body(
+                            ApiResponseDto.builder()
+                                    .isSuccess(true)
+                                    .message("User account deleted successfully!")
+                                    .build()
                     );
+
         } catch (UserNotFoundException e) {
             throw new UserNotFoundException(e.getMessage());
         } catch (Exception e) {
