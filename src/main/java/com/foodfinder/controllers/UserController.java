@@ -1,7 +1,7 @@
 package com.foodfinder.controllers;
 
 import com.foodfinder.dtos.ApiResponseDto;
-import com.foodfinder.dtos.UserDetailsRequestDto;
+import com.foodfinder.dtos.SignUpRequestDto;
 import com.foodfinder.exceptions.UserAlreadyExistsException;
 import com.foodfinder.exceptions.UserNotFoundException;
 import com.foodfinder.exceptions.UserServiceLogicException;
@@ -19,7 +19,7 @@ public class UserController {
     public UserService userService;
 
     @PostMapping("/new")
-    public ResponseEntity<ApiResponseDto<?>> registerUser(@Valid @RequestBody UserDetailsRequestDto userDetailsRequestDto)
+    public ResponseEntity<ApiResponseDto<?>> registerUser(@Valid @RequestBody SignUpRequestDto userDetailsRequestDto)
             throws UserAlreadyExistsException, UserServiceLogicException {
         return userService.registerUser(userDetailsRequestDto);
     }
@@ -31,7 +31,7 @@ public class UserController {
     }
 
     @PutMapping("/update/{id}")
-    public ResponseEntity<ApiResponseDto<?>> updateUser(@Valid @RequestBody UserDetailsRequestDto userDetailsRequestDto,
+    public ResponseEntity<ApiResponseDto<?>> updateUser(@Valid @RequestBody SignUpRequestDto userDetailsRequestDto,
                                                         @PathVariable int id)
             throws UserNotFoundException, UserServiceLogicException {
         return userService.updateUser(userDetailsRequestDto, id);
