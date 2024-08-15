@@ -5,6 +5,7 @@ import com.foodfinder.dtos.UserDetailsRequestDto;
 import com.foodfinder.exceptions.UserAlreadyExistsException;
 import com.foodfinder.exceptions.UserNotFoundException;
 import com.foodfinder.exceptions.UserServiceLogicException;
+import com.foodfinder.models.User;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -22,5 +23,9 @@ public interface UserService {
 
     ResponseEntity<ApiResponseDto<?>> deleteUser(int id)
             throws UserServiceLogicException, UserNotFoundException;
+
+    boolean existsByUsername(String username);
+    boolean existsByEmail(String email);
+    void save(User user);
 
 }
