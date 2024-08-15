@@ -2,7 +2,7 @@ package com.foodfinder.services;
 
 import com.foodfinder.dtos.ApiResponseDto;
 import com.foodfinder.dtos.ApiResponseStatus;
-import com.foodfinder.dtos.UserDetailsRequestDto;
+import com.foodfinder.dtos.SignUpRequestDto;
 import com.foodfinder.exceptions.UserAlreadyExistsException;
 import com.foodfinder.exceptions.UserNotFoundException;
 import com.foodfinder.exceptions.UserServiceLogicException;
@@ -25,7 +25,7 @@ public class UserServiceImpl implements UserService{
     private UserRepository userRepository;
 
     @Override
-    public ResponseEntity<ApiResponseDto<?>> registerUser(UserDetailsRequestDto newUserDetails)
+    public ResponseEntity<ApiResponseDto<?>> registerUser(SignUpRequestDto newUserDetails)
             throws UserAlreadyExistsException, UserServiceLogicException {
 
         // logic to register user
@@ -38,7 +38,7 @@ public class UserServiceImpl implements UserService{
             }
 
             User newUser = new User(
-                    newUserDetails.getUserName(), newUserDetails.getEmail(), newUserDetails.getPhone(), LocalDateTime.now()
+                    newUserDetails.getUserName(), newUserDetails.getEmail(), LocalDateTime.now()
             );
 
             // save() is an in built method given by JpaRepository
@@ -74,7 +74,7 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public ResponseEntity<ApiResponseDto<?>> updateUser(UserDetailsRequestDto newUserDetails, int id)
+    public ResponseEntity<ApiResponseDto<?>> updateUser(SignUpRequestDto newUserDetails, int id)
             throws UserNotFoundException, UserServiceLogicException {
         // logic to update user
         try {

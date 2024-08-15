@@ -1,7 +1,7 @@
 package com.foodfinder.services;
 
 import com.foodfinder.dtos.ApiResponseDto;
-import com.foodfinder.dtos.UserDetailsRequestDto;
+import com.foodfinder.dtos.SignUpRequestDto;
 import com.foodfinder.exceptions.UserAlreadyExistsException;
 import com.foodfinder.exceptions.UserNotFoundException;
 import com.foodfinder.exceptions.UserServiceLogicException;
@@ -12,13 +12,13 @@ import org.springframework.stereotype.Service;
 @Service
 public interface UserService {
 
-    ResponseEntity<ApiResponseDto<?>> registerUser(UserDetailsRequestDto newUserDetails)
+    ResponseEntity<ApiResponseDto<?>> registerUser(SignUpRequestDto newUserDetails)
             throws UserAlreadyExistsException, UserServiceLogicException;
 
     ResponseEntity<ApiResponseDto<?>> getAllUsers()
             throws UserServiceLogicException;
 
-    ResponseEntity<ApiResponseDto<?>> updateUser(UserDetailsRequestDto newUserDetails, int id)
+    ResponseEntity<ApiResponseDto<?>> updateUser(SignUpRequestDto newUserDetails, int id)
             throws UserNotFoundException, UserServiceLogicException;
 
     ResponseEntity<ApiResponseDto<?>> deleteUser(int id)
