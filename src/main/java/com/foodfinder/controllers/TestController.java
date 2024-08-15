@@ -17,6 +17,11 @@ public class TestController {
     public ResponseEntity<ApiResponseDto<?>> Test() {
         return ResponseEntity
                 .status(HttpStatus.OK)
-                .body(new ApiResponseDto<>( "Let's learn spring security with JWT!", ApiResponseStatus.SUCCESS));
+                .body(
+                        ApiResponseDto.builder()
+                                .isSuccess(true)
+                                .message("User account deleted successfully!")
+                                .build()
+                );
     }
 }
