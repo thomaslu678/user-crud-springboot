@@ -25,11 +25,6 @@ public class SignUpRequestDto {
     @NotBlank(message = "Email is required!")
     private String email;
 
-    @NotBlank(message = "Phone number is required!")
-    @Size(min = 10, max = 10, message = "Phone number must have 10 characters!")
-    @Pattern(regexp="^[0-9]*$", message = "Phone number must contain only digits")
-    private String phone;
-
     @NotBlank(message = "Password is required!")
     @Size(min = 8, message = "Password must have atleast 8 characters!")
     @Size(max = 20, message = "Password can have have atmost 20 characters!")

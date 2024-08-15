@@ -5,6 +5,7 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -21,6 +22,7 @@ import java.util.Set;
         @UniqueConstraint(columnNames = "username"),
         @UniqueConstraint(columnNames = "email")
 })
+@Builder
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -39,10 +41,6 @@ public class User {
 
     private boolean enabled;
 
-    @NotBlank
-    @Size(min=10, max = 10)
-    private String phone;
-
     private LocalDateTime regDateAndTime;
 
     @ManyToMany(fetch = FetchType.LAZY)
@@ -51,10 +49,9 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles = new HashSet<>();
 
-    public User(String userName, String email, String phone, LocalDateTime now) {
+    public User(String userName, String email, LocalDateTime now) {
         this.username = userName;
         this.email = email;
-        this.phone = phone;
         this.regDateAndTime = now;
     }
 
