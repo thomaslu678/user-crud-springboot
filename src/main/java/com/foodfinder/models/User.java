@@ -9,6 +9,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.Set;
 
 @Data
 @AllArgsConstructor
@@ -33,10 +35,21 @@ public class User {
     private String email;
 
     @NotBlank
+    private String password;
+
+    private boolean enabled;
+
+    @NotBlank
     @Size(min=10, max = 10)
     private String phone;
 
     private LocalDateTime regDateAndTime;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(  name = "user_roles",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Set<Role> roles = new HashSet<>();
 
     public User(String userName, String email, String phone, LocalDateTime now) {
         this.username = userName;
@@ -44,4 +57,5 @@ public class User {
         this.phone = phone;
         this.regDateAndTime = now;
     }
+
 }
