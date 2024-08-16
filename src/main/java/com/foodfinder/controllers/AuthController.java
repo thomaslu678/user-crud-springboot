@@ -1,6 +1,7 @@
 package com.foodfinder.controllers;
 
 import com.foodfinder.dtos.ApiResponseDto;
+import com.foodfinder.dtos.SignInRequestDto;
 import com.foodfinder.dtos.SignUpRequestDto;
 import com.foodfinder.exceptions.RoleNotFoundException;
 import com.foodfinder.exceptions.UserAlreadyExistsException;
@@ -21,6 +22,11 @@ public class AuthController {
     public ResponseEntity<ApiResponseDto<?>> registerUser(@RequestBody @Valid SignUpRequestDto signUpRequestDto)
             throws UserAlreadyExistsException, RoleNotFoundException {
         return authService.signUpUser(signUpRequestDto);
+    }
+
+    @PostMapping("/signin")
+    public ResponseEntity<ApiResponseDto<?>> signInUser(@RequestBody @Valid SignInRequestDto signInRequestDto){
+        return authService.signInUser(signInRequestDto);
     }
 
 }
