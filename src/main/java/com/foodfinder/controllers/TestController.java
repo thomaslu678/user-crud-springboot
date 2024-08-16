@@ -1,9 +1,9 @@
 package com.foodfinder.controllers;
 
 import com.foodfinder.dtos.ApiResponseDto;
-import com.foodfinder.dtos.ApiResponseStatus;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,15 +13,53 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/test")
 public class TestController {
-    @GetMapping("/")
-    public ResponseEntity<ApiResponseDto<?>> Test() {
+
+    //    Only users with 'ROLE_USER' role can access this end point
+    @GetMapping("/user")
+    @PreAuthorize("hasRole('ROLE_USER')")
+    public ResponseEntity<ApiResponseDto<?>> userDashboard() {
         return ResponseEntity
                 .status(HttpStatus.OK)
-                .body(
-                        ApiResponseDto.builder()
-                                .isSuccess(true)
-                                .message("User account deleted successfully!")
-                                .build()
-                );
+                .body(ApiResponseDto.builder()
+                        .isSuccess(true)
+                        .message("User dashboard!")
+                        .build());
     }
+
+    //    Only users with 'ROLE_ADMIN' role can access this end point'
+    @GetMapping("/admin")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    public ResponseEntity<ApiResponseDto<?>> adminDashboard() {
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(ApiResponseDto.builder()
+                        .isSuccess(true)
+                        .message("Admin dashboard!")
+                        .build());
+    }
+
+    //    Only users with 'ROLE_SUPER_ADMIN' role can access this end point'
+    @GetMapping("/superAdmin")
+    @PreAuthorize("hasRole('ROLE_SUPER_ADMIN')")
+    public ResponseEntity<ApiResponseDto<?>> superAdminDashboard() {
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(ApiResponseDto.builder()
+                        .isSuccess(true)
+                        .message("Super Admin dashboard!")
+                        .build());
+    }
+
+    //    Users with 'ROLE_SUPER_ADMIN' or 'ROLE_ADMIN' roles can access this end point'
+    @GetMapping("/adminOrSuperAdmin")
+    @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
+    public ResponseEntity<ApiResponseDto<?>> adminOrSuperAdminContent() {
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(ApiResponseDto.builder()
+                        .isSuccess(true)
+                        .message("Admin or Super Admin Content!")
+                        .build());
+    }
+
 }
