@@ -15,4 +15,9 @@ public class FormController {
         return "signup";
     }
 
+    @GetMapping("/signin")
+    public String signin() {
+        return "signin";
+    }
+
 }
