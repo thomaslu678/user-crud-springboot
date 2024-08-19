@@ -1,7 +1,6 @@
 package com.foodfinder.handlers;
 
 import com.foodfinder.dtos.ApiResponseDto;
-import com.foodfinder.dtos.ApiResponseStatus;
 import com.foodfinder.exceptions.RoleNotFoundException;
 import com.foodfinder.exceptions.UserAlreadyExistsException;
 import com.foodfinder.exceptions.UserNotFoundException;

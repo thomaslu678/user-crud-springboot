@@ -1,7 +1,6 @@
 package com.foodfinder.services;
 
 import com.foodfinder.dtos.ApiResponseDto;
-import com.foodfinder.dtos.ApiResponseStatus;
 import com.foodfinder.dtos.SignUpRequestDto;
 import com.foodfinder.exceptions.UserAlreadyExistsException;
 import com.foodfinder.exceptions.UserNotFoundException;
