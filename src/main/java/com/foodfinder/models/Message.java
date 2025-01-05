@@ -7,23 +7,21 @@ import lombok.*;
 import java.time.LocalDateTime;
 
 @Data
-@Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "MESSAGES")
+@Entity
 public class Message {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank
+    @ManyToOne
     private User sender;
 
-    @NotBlank
+    @ManyToOne
     private User receiver;
 
-    @NotBlank
     private String message;
 
     private LocalDateTime messageDateAndTime;
