@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Signup</title>
+    <title>Login</title>
 </head>
 
 <body>
 
-<h2>Signup</h2>
+<h2>Login</h2>
 
-<form action="/api/auth/signup" method="post">
+<form action="/api/auth/login" method="post">
+
     <label for="userName">Username:</label><br/>
     <input type="text" id="userName" name="userName"><br/>
 
@@ -19,7 +20,7 @@
     <input type="text" id="password" name="password"><br/>
 
     <label for="role">Role:</label><br/>
-    <select name="role" id="role">
+    <select name="role" id="role" multiple>
         <option value="user">User</option>
         <option value="admin">Admin</option>
         <option value="super_admin">Super Admin</option>

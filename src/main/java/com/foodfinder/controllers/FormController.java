@@ -10,14 +10,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/api/auth")
 public class FormController {
 
-    @GetMapping("/signup")
-    public String signup() {
-        return "signup";
+    @GetMapping("/register")
+    public String register() {
+        return "register";
     }
 
-    @GetMapping("/signin")
-    public String signin() {
-        return "signin";
+    @GetMapping("/login")
+    public String login() {
+        return "login";
     }
 
     @GetMapping("/template")

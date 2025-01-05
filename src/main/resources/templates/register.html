@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register</title>
+</head>
+
+<body>
+
+<h2>Register</h2>
+
+<form action="/api/auth/register" method="post">
+
+    <label for="userName">Username:</label><br/>
+    <input type="text" id="userName" name="userName"><br/>
+
+    <label for="email">Email:</label><br/>
+    <input type="text" id="email" name="email"><br/>
+
+    <label for="password">Password:</label><br/>
+    <input type="text" id="password" name="password"><br/>
+
+    <label for="role">Role:</label><br/>
+    <select name="role" id="role" multiple>
+        <option value="user">User</option>
+        <option value="admin">Admin</option>
+        <option value="super_admin">Super Admin</option>
+    </select><br/>
+
+    <button type="submit">Submit</button>
+</form>
+
+</body>
+</html>
