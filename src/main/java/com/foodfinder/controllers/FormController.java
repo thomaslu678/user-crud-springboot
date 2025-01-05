@@ -20,4 +20,14 @@ public class FormController {
         return "signin";
     }
 
+    @GetMapping("/template")
+    public String template() {
+        return "template";
+    }
+
+    @GetMapping("/messages")
+    public String messages() {
+        return "messages";
+    }
+
 }
